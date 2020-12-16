@@ -16,3 +16,23 @@
 [Lesson 06: Pipes](./Lessons/Lesson6)  
 [Lesson 07: Routing](./Lessons/Lesson7)  
 [Lesson 08: Observables - Call API](./Lessons/Lesson8)
+
+## To install Angular 8, we require the following things:
+
+- Node.js, npm
+  Link to download: https://nodejs.org  
+  Check version Node and Npm following command:
+  > node -v  
+  > npm -v
+- Angular CLI (Command Line Interface)  
+   To install the Angular CLI, we have to write the following command:
+  > npm install –g @angular/cli
+- An IDE for writing our code (VS code)  
+  Link to download: https://code.visualstudio.com
+
+## Creating first APP in Angular 8
+
+- To create the Angular app, we have to write the following command:
+  > ng new your-app
+
+![](./assets/create-new-app.png?raw=true "Creating APP")

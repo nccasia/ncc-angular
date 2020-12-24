@@ -287,11 +287,15 @@ See the code:
 </p>
 ```
 ``Example`` 
+
 Email is required
+
 ![](./assets/email-error-1.png?raw=true "Forms")
 
 Invalid Email
+
 ![](./assets/email-error-2.png?raw=true "Forms")
 
 Valid Email
+
 ![](./assets/template-forms-output.png?raw=true "Forms")

@@ -1,0 +1,22 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="rfContact" class="row" style="margin: 5px;">
+    <label class="col-2 col-form-label">
+        Email:
+    </label>
+    <div class="col-10">
+        <input class="form-control" type="email" formControlName="email">
+        <div class="col alert alert-danger" role="alert" *ngIf="rfContact.controls.email?.errors?.required
+             && rfContact.controls.email?.touched">
+            Email is required!
+        </div>
+        <div class="col alert alert-danger" role="alert" *ngIf="rfContact.controls.email?.errors?.email
+             && rfContact.controls.email?.touched">
+            Invalid email address!
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-dark">Submit</button>
+    </div>
+</form>
+<p>
+    Value: {{email}}
+</p>

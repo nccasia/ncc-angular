@@ -1,11 +1,15 @@
-import { Component } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
+  selector: 'app-forms',
+  templateUrl: './forms.component.html',
+  styleUrls: ['./forms.component.css']
 })
-export class AppComponent {
+export class FormsComponent implements OnInit {
+
+  constructor() { }
+
   email: string;
   rfContact: FormGroup;
 
@@ -22,4 +26,5 @@ export class AppComponent {
     if (this.rfContact.valid)
       this.email = this.rfContact.controls["email"].value;
   }
+
 }

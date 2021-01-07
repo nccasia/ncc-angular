@@ -1,0 +1,15 @@
+<h2> Binding Example</h2>
+<div (click)="onDivClick()">
+    <button (click)="onSave($event)">Save</button>
+</div>
+
+
+<!--String interpolation-->
+<h2>{{title}}</h2>
+<!--Property Binding-->
+<img [src]="imgUrl" />
+
+
+<h2>Two-way Binding Example</h2>
+<input [(ngModel)]="titleInput" name="titleInput" /> <br /><br />
+<p>{{titleInput}}</p>

@@ -35,7 +35,7 @@ This will happens immediately and automatically, ensures that the HTML template 
 
 ![](./assets/Component-of-Data-Binding.png?raw=true "Component-of-Data-Binding")
 
-## Example
+## Examples:
 
 ### Event binding in Angular 8
 

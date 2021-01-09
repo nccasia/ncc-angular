@@ -1,3 +1,14 @@
 <h1>Angular 8 Examples</h1>
 
-<router-outlet></router-outlet>
+<div class="container">
+    <div class="lession">
+        <h2>Lesson:</h2>
+        <ul>
+            <li><a routerLink="routing-example" routerLinkActive="active">Lession 7: Router & Navigation</a></li>
+            <li><a routerLink="rxjs-http" routerLinkActive="active">Lession 9: Rxjs & Http Client</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

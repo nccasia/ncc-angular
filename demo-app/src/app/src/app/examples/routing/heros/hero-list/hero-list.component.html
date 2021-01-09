@@ -1,0 +1,26 @@
+<div>
+    Hero list
+</div>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Superman</td>
+            <!-- using path param, query param-->
+            <td><a [routerLink]="['../detail', 1]" [queryParams]="{name: 'Superman'}">Superman</a></td>
+        </tr>
+        <tr>
+            <td>Batman</td>
+            <td><a [routerLink]="['../detail', 2]" [queryParams]="{name: 'Batman'}">Batman</a></td>
+        </tr>
+        <tr>
+            <td>Wonder women (roter guard exaple)</td>
+            <td><a [routerLink]="['../detail', -1]" [queryParams]="{name: 'Wonder women'}">Wonder women</a></td>
+        </tr>
+    </tbody>
+</table>

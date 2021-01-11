@@ -49,11 +49,11 @@ imports: [
 <router-outlet></router-outlet>
 ```
 ## Lấy thông tin từ route
-- Để lấy thông tin từ URL trong Angular chúng ta có thể sử dụng các service sau:
+Để lấy thông tin từ URL trong Angular chúng ta có thể sử dụng các service sau:
 * [Router](https://angular.io/api/router)
 * [ActivatedRoute](https://angular.io/api/router/ActivatedRoute)
 * [ParamMap](https://angular.io/api/router/ParamMap)
-- Ví dụ để lấy `name` từ `queryParams` chúng ta có thể sử dụng `ActivatedRoute`:
+Ví dụ để lấy `name` từ `queryParams` chúng ta có thể sử dụng `ActivatedRoute`:
 ```
 constructor(
   private route: ActivatedRoute,
@@ -148,13 +148,13 @@ goToItems() {
 - Chi tiết hơn về `lazy loading` tham khảo thêm ở đây [Lazy Loading](https://angular.io/guide/lazy-loading-ngmodules)
 
 ## Ngăn chặn các truy cập chưa được xác thực (unauthorized access)
-- Để ngặn chặn các truy cập chưa được xác thực (chưa login, không có quyền...) trong Angular chúng ta sử dụng `route guard`, một số `route guard` interface có sẵn trong Angular:
+Để ngặn chặn các truy cập chưa được xác thực (chưa login, không có quyền...) trong Angular chúng ta sử dụng `route guard`, một số `route guard` interface có sẵn trong Angular:
 * [CanActivate](https://angular.io/api/router/CanActivate)
 * [CanActivateChild](https://angular.io/api/router/CanActivateChild)
 * [CanDeactivate](https://angular.io/api/router/CanDeactivate)
 * [Resolve](https://angular.io/api/router/Resolve)
 * [CanLoad](https://angular.io/api/router/CanLoad)
-- Một ví dụ sử dụng `CanLoad` như sau:
+Một ví dụ sử dụng `CanLoad` như sau:
 ```
 export class YourGuard implements CanLoad {
   canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
@@ -229,21 +229,21 @@ const appRoutes: Routes = [
 export class AppModule { }
 ```
 
-- `RouterModule.forRoot()` method thiết lập tuyến route chính cho ứng dụng của bạn.
-- `:id` tương ứng với một path parameter ví dụ `/hero/42`
-- `data` là thuộc tính mà bạn có thể dùng để lưu một số data read only.
-- `path: '**'` wildcard routes, giúp xử lý các URL không tồn tại trong ứng dụng.
-- `canActive` thuộc tính định nghĩa các router guard giúp bạn ngăn chặn các truy cập chưa được xác thực.
+`RouterModule.forRoot()` method thiết lập tuyến route chính cho ứng dụng của bạn.
+`:id` tương ứng với một path parameter ví dụ `/hero/42`
+`data` là thuộc tính mà bạn có thể dùng để lưu một số data read only.
+`path: '**'` wildcard routes, giúp xử lý các URL không tồn tại trong ứng dụng.
+`canActive` thuộc tính định nghĩa các router guard giúp bạn ngăn chặn các truy cập chưa được xác thực.
 
 ### Router outlet
 `RouterOutlet` là một directive của Angular Router được sử dụng như một component `<router-outlet></router-outlet>`. Nó là nơi mà router sẽ hiển thị các component tương ứng.
 
 ### Router links vs Active router links
-- `RouterLink` là một directive được xây dựng để chuyển hướng giữa các component
+`RouterLink` là một directive được xây dựng để chuyển hướng giữa các component
 ```
  <a routerLink="/crisis-center">Crisis Center</a>
 ```
-- `RouterLinkActive` directive giúp toggle CSS class cho một actived `RouterLink`
+`RouterLinkActive` directive giúp toggle CSS class cho một actived `RouterLink`
 ```
 <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a>
 ```
@@ -251,10 +251,10 @@ export class AppModule { }
 - Các thông tin như route path, parameter,.. thì có sẵn trong một `injected router service` được gọi là [ActivatedRoute](https://angular.io/api/router/ActivatedRoute)
 - Có thể access các thông tin này qua các property của nó: `url`, `data`, `paramMap`, `outlet`,...
 ### Router events
-- Trong mỗi sự chuyển hướng, `Router` bắn ra các `events` thông qua `Router.events` property. Các `events` này bao gồm từ lúc bắt đầu cho đến lúc kết thúc một navigation. Một vài sự kiện như sau: `NavigationStart`, `RouteConfigLoadStart`, `RouteConfigLoadEnd`, `GuardsCheckStart`, `ChildActivationStart`,..
+Trong mỗi sự chuyển hướng, `Router` bắn ra các `events` thông qua `Router.events` property. Các `events` này bao gồm từ lúc bắt đầu cho đến lúc kết thúc một navigation. Một vài sự kiện như sau: `NavigationStart`, `RouteConfigLoadStart`, `RouteConfigLoadEnd`, `GuardsCheckStart`, `ChildActivationStart`,..
 
 ### Một số thuật ngữ
-First Header | Second Header
+Khái niệm | Nội dung
 ------------ | -------------
 [Router](https://angular.io/api/router/Router) | Hiển thị các thành phần ứng dụng/component tương ứng với URL hiện tại, quản lý sự điều hướng từ component này sang component khác
 [RouterModule](https://angular.io/api/router/RouterModule) | Là một `NgModule` riêng biệt cung cấp các service và directive cần thiết cho việc điều hướng ứng dụng

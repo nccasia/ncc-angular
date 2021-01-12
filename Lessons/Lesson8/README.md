@@ -1,15 +1,16 @@
 # Rxjs & Http Client
 - Rxjs là một build-in dependency trong Angular, Rxjs giúp Angular trở nên `reactive`, ứng dụng Angular là một reactive system dễ thấy ở đây nhất là EventEmiter hay ReactiveForm. Trong bài học này chúng ta sẽ tìm hiểu thư viện Rxjs một số Operators thường xuyên sử dụng
-- Trong ứng dụng Angular chúng ta thương xuyên làm việc với `Observable` thông qua việc call API sư dụng Http Client, vậy chúng ta sẽ tìm hiểu cách làm việc với `Observable` và tương tác với server API thông qua Http Client Module.
+- Trong ứng dụng Angular chúng ta thương xuyên làm việc với `Observable` thông qua việc call API sử dụng Http Client, vậy chúng ta sẽ tìm hiểu cách làm việc với `Observable` và tương tác với backend API thông qua Http Client Module.
 
 ## Các nội dung chính
 1. Một số khái niệm/concepts cơ bản trong Rxjs
 2. Tìm hiểu một số Rxjs Operators
-3. Get data với HttpClient
-4. Post data với HttpClient
-5. Handing request error
-6. Configuring HTTP URL parameters
-7. Intercepting request and responses
+3. Http Client Module
+4. Lấy dữ liệu từ server với HttpClient
+5. Gửi dữ liệu lên server với HttpClient
+6. Xử lý request error/Handing request error
+7. Configuring HTTP URL parameters
+8. Intercepting request and responses
 
 ## Một số khái niệm/concepts cơ bản trong Rxjs
 ### Observable
@@ -229,3 +230,86 @@ this.productCategoryService.getCategories()
   console.log('products', products);
 })
 ```
+
+## Http Client Module
+Hầu hết các ứng dụng front-end đều cần giao tiếp với một server thông qua hiao thức HTTP. Angular cung cấp một HTTP API đơn giản ở phía máy khách được gọi là `HttpClient` service đây là một lớp nằm trong `@angular/common/http`
+Thiết lập để connect với server thông qua HttpClient:
+```
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+
+@NgModule({
+  imports: [
+    BrowserModule,
+    // import HttpClientModule
+    HttpClientModule,
+  ],
+  declarations: [
+    AppComponent,
+  ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule {}
+```
+`inject` HttpClient service như một dependency của một class/service:
+```
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable()
+export class ConfigService {
+  constructor(private http: HttpClient) { }
+}
+```
+
+## Get data với HttpClient
+Sử dụng method `HttpClient.get()` để get data từ server, đây là một `asynchronous` gửi một HTTP request và trả về một `Observable`, `Observable` sẽ emit data từ server khi nhận được response. Phương thức `get()` có 2 tham số là API URL và `options` object:
+Cấu trúc của `options` object như sau:
+```
+options: {
+    headers?: HttpHeaders | {[header: string]: string | string[]},
+    observe?: 'body' | 'events' | 'response',
+    params?: HttpParams|{[param: string]: string | string[]},
+    reportProgress?: boolean,
+    responseType?: 'arraybuffer'|'blob'|'json'|'text',
+    withCredentials?: boolean,
+  }
+```
+### Định nghĩa kiểu dữ liệu trả về (response type)
+Bạn có define cấu trúc request với một kiểu dữ liệu được định nghĩa cho dữ liệu trả về, điều này giúp xử lý dữ liệu response dễ dàng và trực quan hơn
+```
+export interface Config {
+  heroesUrl: string;
+  textfile: string;
+}
+
+getConfig() {
+  // now returns an Observable of Config
+  return this.http.get<Config>(this.configUrl);
+}
+```
+
+###  Lấy toàn bộ thông tin từ response
+Ở trên ta đã nói đên hàm `HttpClient.get()` có tham số thứ hai là một `options` object, nếu không thiết lập gì mặc định hàm này sẽ trả về JSON data chứa response body. Đôi khi bạn cần các thông tin khác từ response bên cạnh body như response header, status code,... điều này hoàn toàn có thể khi chỉ định `observe` option cho hàm `get()`
+```
+getConfigResponse(): Observable<HttpResponse<Config>> {
+  return this.http.get<Config>(
+    this.configUrl, { observe: 'response' });
+}
+```
+### Request một dữ liệu không phải JSON
+Thỉng thoảng dữ liệu trả về từ một request không phải JSON đôi khi nó có thể là một file, text string,.. chúng ta có thể chỉ định kiểu dữ liệu trả về bằng cách sử dụng `responseType` option. Ví dụ sau xử lý một request trả về kiểu dữ liệu 'text':
+```
+getTextFile(filename: string) {
+  return this.http.get(filename, {responseType: 'text'})
+    .pipe(
+      tap( // Log the result or error
+        data => this.log(filename, data),
+        error => this.logError(filename, error)
+      )
+    );
+}
+```
+## Gửi dữ liệu lên server với HttpClient
+Các ứng dùng thường xuyển gửi dữ liệu lên server thông qua một POST request khi submit một form, để thực hiện việc này chúng ta sử dụng phương thức 

@@ -137,7 +137,7 @@ goToItems() {
 }
 ```
 ## Lazy loading trong Angular
-- Bạn có thể config router để load từng phần ứng các dưới dạng các module khi cần thay vì load toàn bộ ứng dụng (load tất cả các module) khi chạy ứng dụng lần đầu.
+- Bạn có thể config router để load từng phần ứng các dưới dạng các module khi cần thay vì load toàn bộ ứng dụng một lần khi chạy ứng dụng lần đầu.
 ```
 {
     path: 'routing-example',
@@ -145,31 +145,17 @@ goToItems() {
 },
 ```
 
-- Chi tiết hơn về `lazy loading` tham khảo thêm ở đây [Lazy Loading](https://angular.io/guide/lazy-loading-ngmodules)
+- Chi tiết hơn về `lazy loading` tham khảo thêm ở đây [Lazy Loading](https://angular.io/guide/lazy-loading-ngmodules), ở phần nâng cao chúng ta sẽ đi sâu hơn về lazyloading trong angular
 
 ## Ngăn chặn các truy cập chưa được xác thực (unauthorized access)
-Để ngặn chặn các truy cập chưa được xác thực (chưa login, không có quyền...) trong Angular chúng ta sử dụng `route guard`, một số `route guard` interface có sẵn trong Angular:
+- Để ngặn chặn các truy cập chưa được xác thực (chưa login, không có quyền...) trong Angular chúng ta sử dụng `route guard`, một số `route guard` interface có sẵn trong Angular:
 * [CanActivate](https://angular.io/api/router/CanActivate)
 * [CanActivateChild](https://angular.io/api/router/CanActivateChild)
 * [CanDeactivate](https://angular.io/api/router/CanDeactivate)
 * [Resolve](https://angular.io/api/router/Resolve)
 * [CanLoad](https://angular.io/api/router/CanLoad)
-Một ví dụ sử dụng `CanLoad` như sau:
-```
-export class YourGuard implements CanLoad {
-  canLoad(route: Route): Observable<boolean> | Promise<boolean> | boolean {
-    // your logic here
-    return true;
-  }
-}
-```
-```
-{
-  path: 'routing-example',
-  loadChildren: () => import('./src/app/examples/routing-example.module').then(m => m.RoutingExampleModule),
-  canLoad: [YourGuard]
-}
-```
+
+- Sẽ có bài viết riêng nói rõ hơn về cách viết một `route guard` để ngăn chặn các unauthorized access ở phần nâng cao.
 ## Truyền parameter qua route
 - Truyển parameter trong view
 ```
@@ -229,11 +215,11 @@ const appRoutes: Routes = [
 export class AppModule { }
 ```
 
-`RouterModule.forRoot()` method thiết lập tuyến route chính cho ứng dụng của bạn.
-`:id` tương ứng với một path parameter ví dụ `/hero/42`
-`data` là thuộc tính mà bạn có thể dùng để lưu một số data read only.
-`path: '**'` wildcard routes, giúp xử lý các URL không tồn tại trong ứng dụng.
-`canActive` thuộc tính định nghĩa các router guard giúp bạn ngăn chặn các truy cập chưa được xác thực.
+* `RouterModule.forRoot()` method thiết lập tuyến route chính cho ứng dụng của bạn.
+* `:id` tương ứng với một path parameter ví dụ `/hero/42`
+* `data` là thuộc tính mà bạn có thể dùng để lưu một số data read only.
+* `path: '**'` wildcard routes, giúp xử lý các URL không tồn tại trong ứng dụng.
+* `canActive` thuộc tính định nghĩa các router guard giúp bạn ngăn chặn các truy cập chưa được xác thực.
 
 ### Router outlet
 `RouterOutlet` là một directive của Angular Router được sử dụng như một component `<router-outlet></router-outlet>`. Nó là nơi mà router sẽ hiển thị các component tương ứng.

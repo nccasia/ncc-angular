@@ -8,10 +8,11 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TempConverterPipe } from "./src/app/examples/pipes/temp-converter.pipe";
 import { PipeComponent } from './src/app/examples/pipes/pipe.component';
 import { FormsComponent } from './src/app/examples/forms/forms.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, DataBindingComponent, TempConverterPipe, PipeComponent, FormsComponent],
-  imports: [FormsModule, ReactiveFormsModule, BrowserModule, AppRoutingModule],
+  imports: [FormsModule, ReactiveFormsModule, BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

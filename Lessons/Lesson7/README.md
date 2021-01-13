@@ -79,10 +79,9 @@ const routes: Routes = [
 - Để thiết lập `redirect`, bạn phải thiết lập với path mà từ đây bạn muốn chuyến hướng:
 ```
 const appRoutes: Routes = [
-  { path: 'crisis-center', component: CrisisListComponent },
-  { path: 'heroes',        component: HeroListComponent },
-  { path: 'something',   redirectTo: '/heroes', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '', pathMatch: 'full', redirectTo: 'list' },
+  { path: 'list', component: HeroListComponent },
+  { path: 'detail/:id', component: HeroDetailComponent },
 ];
 ```
 - Lưu ý giá trị `pathMatch`, đây là giá trị để Router xác minh đường dẫn của bạn có khớp hay không. Thuộc tính này có thể là `full` hoặc `prefix` mặc định sẽ là `prefix`. Nếu giá trị là `full` Router yêu cầu URL phải khớp hoàn toàn với route đã được define ví dụ `localhost:3000/something`, trường hợp là `prefix` chỉ cần phần trước của URL khớp với path đã define ví dụ `localhost:3000/something/1` hoặc `localhost:3000/something/detail` hoặc cũng có thể chính là `localhost:3000/something`.

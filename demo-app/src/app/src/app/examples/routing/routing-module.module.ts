@@ -7,7 +7,6 @@ import { HerosComponent } from './heros/heros.component';
 import { HeroListComponent } from './heros/hero-list/hero-list.component';
 import { HeroDetailComponent } from './heros/hero-detail/hero-detail.component';
 import { CarsComponent } from './cars/cars.component';
-import { HeroGuardGuard } from './hero-guard.guard';
 
 const routes: Routes = [
   {
@@ -36,8 +35,6 @@ const routes: Routes = [
           {
             path: 'detail/:id',
             component: HeroDetailComponent,
-            // router guard example
-            canActivate: [HeroGuardGuard]
           },
         ]
       },

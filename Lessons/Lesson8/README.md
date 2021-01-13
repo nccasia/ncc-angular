@@ -6,8 +6,8 @@
 1. Làm việc với HttpClientModule
 2. Lấy dữ liệu từ server với HttpClient
 3. Gửi dữ liệu lên server với HttpClient
-4. Xử lý request error/Handing request error
-5. Configuring HTTP URL parameters
+4. Configuring HTTP URL parameters
+5. Xử lý request error/Handing request error
 
 ## Làm việc với HttpClientModule
 Hầu hết các ứng dụng front-end đều cần giao tiếp với một server thông qua hiao thức HTTP. Angular cung cấp một HTTP API đơn giản ở phía máy khách được gọi là `HttpClient` service đây là một lớp nằm trong `@angular/common/http`
@@ -188,6 +188,53 @@ searchHeroes(term: string): Observable<Hero[]> {
   return this.http.get<Hero[]>(this.heroesUrl, options)
     .pipe(
       catchError(this.handleError<Hero[]>('searchHeroes', []))
+    );
+}
+```
+## Xử lý request error/Handing request error
+Nếu request xử lý không thành công hoặc có lỗi trên server Http Client sẽ trả về một `error` object that vì một `successful` response. Trường hợp có lỗi xảy ra bạn có thể lấy được thông tin chi tiết của lỗi hoặc ở một vài trường hợp có thể retry request. Chúng ta có thể xử lý các lỗi này bằng một số cách như sau:
+### Get error detail
+Một ứng dụng thân thiện thường có các `notify` để thông báo đến người dùng trong trường hợp có lỗi. Có 2 loại lỗi có thể xảy ra khi tương tác với server:
+* Server có thể `reject` request và trả về một HTTP respone với các status code khác status 200 có thể là 404 hoặc 500, đây là các error response
+* Một số trường hợp lỗi có thể xảy ra ở phía client như lỗi mạng và một exception sẽ được `thrown` bên trong một Rxjs operator, các lỗi này tạp ra một JavaScript `ErrorEvent` object.
+HttpClient có thể bắt cả 2 loại lỗi này bên trong [HttpErrorResponse](https://angular.io/api/common/http/HttpErrorResponse). Ví dụ sau dây define một error handler sẽ xử lý các lỗi có thể phát sinh khi tương tác với API
+
+```
+private handleError(error: HttpErrorResponse) {
+  if (error.error instanceof ErrorEvent) {
+    // A client-side or network error occurred. Handle it accordingly.
+    console.error('An error occurred:', error.error.message);
+  } else {
+    // The backend returned an unsuccessful response code.
+    // The response body may contain clues as to what went wrong.
+    console.error(
+      `Backend returned code ${error.status}, ` +
+      `body was: ${error.error}`);
+  }
+  // Return an observable with a user-facing error message.
+  return throwError(
+    'Something bad happened; please try again later.');
+}
+```
+
+Error handlẻ ở ví dụ trên đã trả về một `ErrorObservable` với giá trị là một `user-friendly` error message. Đoạn code dưới đấy sẽ dụng handler trên bằng các sử dụng 2 Rxjs operator là `pipe` và `catchError`:
+```
+getUser() {
+  return this.http.get<User>('/api/users')
+    .pipe(
+      catchError(this.handleError)
+    );
+}
+```
+
+### Retry một Http request khi có lỗi xảy ra
+Ở một số trường hợp các lỗi xảy ra chỉ là tạm thời và sẽ tự động biến mất khi bạn thử lại, ví dụ mất kết nối mạng là một trường hợp điển hình. Chúng ta có thể `retry` lại request bằng cách sử dụng `retry` operator như ví dụ sau:
+```
+getUser() {
+  return this.http.get<User>('/api/users')
+    .pipe(
+      retry(3), // retry a failed request up to 3 times
+      catchError(this.handleError)
     );
 }
 ```

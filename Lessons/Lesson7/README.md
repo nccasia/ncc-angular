@@ -17,7 +17,7 @@
 ## Define một router cơ bản 
 
 - Khai báo router và các component tương ứng `app-routing.module.ts`:
-```
+```ts
 const routes: Routes = [
   { path: 'first-component', component: FirstComponent },
   { path: 'second-component', component: SecondComponent },
@@ -31,14 +31,15 @@ const routes: Routes = [
 export class AppRoutingModule { }
 ```
 - Add `AppRoutingModule` vào `AppModule`:
-```
-imports: [
+
+```ts
+  imports: [
     BrowserModule,
     AppRoutingModule
   ],
 ```
 - Sử dụng router trong view để điều hướng với `routerLink`:
-```
+```html
 <nav>
   <ul>
     <li><a routerLink="/first-component" routerLinkActive="active">First Component</a></li>
@@ -49,12 +50,12 @@ imports: [
 <router-outlet></router-outlet>
 ```
 ## Lấy thông tin từ route
-Để lấy thông tin từ URL trong Angular chúng ta có thể sử dụng các service sau:
-* [Router](https://angular.io/api/router)
-* [ActivatedRoute](https://angular.io/api/router/ActivatedRoute)
-* [ParamMap](https://angular.io/api/router/ParamMap)
-Ví dụ để lấy `name` từ `queryParams` chúng ta có thể sử dụng `ActivatedRoute`:
-```
+Để lấy thông tin từ URL trong Angular chúng ta có thể sử dụng các service sau:  
+* [Router](https://angular.io/api/router)  
+* [ActivatedRoute](https://angular.io/api/router/ActivatedRoute)  
+* [ParamMap](https://angular.io/api/router/ParamMap)  
+Ví dụ để lấy `name` từ `queryParams` chúng ta có thể sử dụng `ActivatedRoute`:  
+```ts
 constructor(
   private route: ActivatedRoute,
 ) {}
@@ -67,7 +68,7 @@ ngOnInit() {
 ```
 ## Thiết lập router ngoại tuyến (wildcard routes) với `404 page`
 - Sẽ là tốt hơn nếu bạn có thể xử lý khi người dùng nhập vào một URL không khớp với các tuyến routing đã được định nghĩa. Để xử lý việc này chúng ta sẽ setup một `wildcard route`:
-```
+```ts
 const routes: Routes = [
   { path: 'first-component', component: FirstComponent },
   { path: 'second-component', component: SecondComponent },
@@ -77,7 +78,7 @@ const routes: Routes = [
 - Ứng dụng sẽ tự động chuyển đến trang `404` khi người dùng nhập vào một URL không tồn tại.
 ## Thiết lập chuyển hướng/redirects
 - Để thiết lập `redirect`, bạn phải thiết lập với path mà từ đây bạn muốn chuyến hướng:
-```
+```ts
 const appRoutes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'list' },
   { path: 'list', component: HeroListComponent },
@@ -87,7 +88,7 @@ const appRoutes: Routes = [
 - Lưu ý giá trị `pathMatch`, đây là giá trị để Router xác minh đường dẫn của bạn có khớp hay không. Thuộc tính này có thể là `full` hoặc `prefix` mặc định sẽ là `prefix`. Nếu giá trị là `full` Router yêu cầu URL phải khớp hoàn toàn với route đã được define ví dụ `localhost:3000/something`, trường hợp là `prefix` chỉ cần phần trước của URL khớp với path đã define ví dụ `localhost:3000/something/1` hoặc `localhost:3000/something/detail` hoặc cũng có thể chính là `localhost:3000/something`.
 ## Các tuyến route lồng nhau (Nesting routes)
 - Khi ứng dụng của bạn trở nên lớn hơn, bạn có thể sẽ phải định nghĩa các route liên quan đến một component nào đó thay vì từ chính `root component`. Các route lồng nhau này được gọi là các `child routes`.
-```
+```html
 <h2>Parent Component</h2>
 <nav>
   <ul>
@@ -99,7 +100,7 @@ const appRoutes: Routes = [
 <router-outlet></router-outlet>
 ```
 - Định nghĩa các `child routes`
-```
+```ts
 const routes: Routes = [
   {
     path: 'parrent-component',
@@ -119,7 +120,7 @@ const routes: Routes = [
 ```
 ## Sử dụng đường dẫn tương đối
 - Đường dẫn tương đối cho phép bạn xác định đường dẫn liên quan đến URL hiện tại. Ví dụ sau đây chúng ta có 2 component cùng cấp `FirstComponent` và `SecondComponent` và đường dẫn đén `SecondComponent` nằm ở `FirstComponent`, chúng ta có thể sử sụng `../` để chuyển hướng thay vì dụng toàn bộ đường dẫn:
-```
+```html
 <h2>First Component</h2>
 
 <nav>
@@ -130,14 +131,14 @@ const routes: Routes = [
 <router-outlet></router-outlet>
 ```
 - Chỉ định relative path bên trong class component sử dụng `relativeTo`:
-```
+```ts
 goToItems() {
   this.router.navigate(['second-component'], { relativeTo: this.route.parrent });
 }
 ```
 ## Lazy loading trong Angular
 - Bạn có thể config router để load từng phần ứng các dưới dạng các module khi cần thay vì load toàn bộ ứng dụng một lần khi chạy ứng dụng lần đầu.
-```
+```ts
 {
     path: 'routing-example',
     loadChildren: () => import('./src/app/examples/routing-example.module').then(m => m.RoutingExampleModule),
@@ -157,7 +158,7 @@ goToItems() {
 - Sẽ có bài viết riêng nói rõ hơn về cách viết một `route guard` để ngăn chặn các unauthorized access ở phần nâng cao.
 ## Truyền parameter qua route
 - Truyển parameter trong view
-```
+```html
 // truyền path param
 <a [routerLink]="['/hero', hero.id]">
   <span class="badge">{{ hero.id }}</span>{{ hero.name }}
@@ -168,7 +169,7 @@ goToItems() {
 ```
 - Truyền parameter trong class component:
 
-```
+```ts
 // truyền path param là một user ID
 this.router.navigate(['users', userID]);
 
@@ -186,7 +187,7 @@ this.router.navigate(['users'], {
 import { RouterModule, Routes } from '@angular/router';
 ```
 ### Các thành phần cơ bản khi setup router (Configuration)
-```
+```ts
 const appRoutes: Routes = [
   { path: 'crisis-center', component: CrisisListComponent },
   { path: 'hero/:id',      component: HeroDetailComponent },

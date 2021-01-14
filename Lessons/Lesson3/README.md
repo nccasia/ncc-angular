@@ -115,4 +115,4 @@ Giờ sử dụng directive `appEmoji` bên trong app-component
 ....
 ```
 Kết quả như hình
-![](./assets/lesson3-custome-directive.png?raw=true "custome-directive")
+![](./assets/lesson3-custome-directive.PNG?raw=true "custome-directive")

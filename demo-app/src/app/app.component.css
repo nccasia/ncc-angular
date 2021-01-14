@@ -1,0 +1,30 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.lession {
+    padding: 20px;
+    width: 20%;
+}
+
+.lession > ul > li {
+    border: 1px solid wheat;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    list-style-type: none;
+    padding: 10px;
+}
+
+.content {
+    padding: 20px;
+    width: 80%;
+    min-height: 500px;
+    border: 1px solid black;
+}
+
+.active {
+    color: red;
+    font-weight: bold;
+}

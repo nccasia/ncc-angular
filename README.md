@@ -8,6 +8,7 @@
 
 ## We have 8 lessons for base features:
 
+- Basic features:  
 [Lesson 01: File Structure Module](./Lessons/Lesson1)  
 [Lesson 02: Components](./Lessons/Lesson2)  
 [Lesson 03: Directives](./Lessons/Lesson3)  
@@ -15,7 +16,16 @@
 [Lesson 05: Data binding](./Lessons/Lesson5)  
 [Lesson 06: Pipes](./Lessons/Lesson6)  
 [Lesson 07: Routing](./Lessons/Lesson7)  
-[Lesson 08: Observables - Call API](./Lessons/Lesson8)
+[Lesson 08: Http Client](./Lessons/Lesson8)
+
+- Advance features:  
+[Lesson 01: Dependency Injection](./Advance/Lesson1)  
+[Lesson 02: Lazy loading](./Advance/Lesson2)  
+[Lesson 03: Router guard](./Advance/Lesson3)  
+[Lesson 04: Interceptor](./Advance/Lesson4)  
+[Lesson 05: Rxjs Library](./Advance/Lesson5)  
+[Lesson 06: Dynamic component](./Advance/Lesson6)  
+[Lesson 07: Angular Animation](./Advance/Lesson7)  
 
 ## To install Angular 8, we require the following things:
 

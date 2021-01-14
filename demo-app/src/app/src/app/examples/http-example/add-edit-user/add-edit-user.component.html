@@ -1,0 +1,16 @@
+<h3>{{ id? 'Edit' : 'Add' }} User</h3>
+
+<form [formGroup]="userForm">
+  <label>
+    Name: <input formControlName="name" />
+  </label>
+  <label>
+    Email: <input formControlName="email" />
+  </label>
+  <label>
+    Website: <input formControlName="website" />
+  </label>
+
+  <button *ngIf="!id" (click)="addNew()">Add</button>
+  <button *ngIf="id" (click)="updateUser()">Edit</button>
+</form>

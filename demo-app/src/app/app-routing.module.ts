@@ -7,7 +7,9 @@ import { PipeComponent } from "./src/app/examples/pipes/pipe.component";
 const routes: Routes = [
   { path: "data-binding", component: DataBindingComponent },
   { path: "angular-forms", component: FormsComponent},
-  { path: "pipes", component: PipeComponent}
+  { path: "pipes", component: PipeComponent},
+  { path: "routing-example", loadChildren: () => import('./src/app/examples/routing/routing-module.module').then(m => m.RoutingModuleModule)},
+  { path: "http-example", loadChildren: () => import('./src/app/examples/http-example/http-example.module').then(m => m.HttpExampleModule)},
 ];
 
 @NgModule({

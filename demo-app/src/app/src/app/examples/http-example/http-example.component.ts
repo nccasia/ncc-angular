@@ -8,15 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HttpExampleComponent implements OnInit {
 
-  users: User[] = []
+
   constructor(
-    private demoService: DemoService
   ) { }
 
   ngOnInit() {
-    this.demoService.getUser().subscribe(users => {
-      this.users = users;
-    })
   }
-
 }

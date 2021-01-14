@@ -8,9 +8,10 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TempConverterPipe } from "./src/app/examples/pipes/temp-converter.pipe";
 import { PipeComponent } from './src/app/examples/pipes/pipe.component';
 import { FormsComponent } from './src/app/examples/forms/forms.component';
+import { EmojiDirective } from "./src/app/examples/directives/emoji.directive";
 
 @NgModule({
-  declarations: [AppComponent, DataBindingComponent, TempConverterPipe, PipeComponent, FormsComponent],
+  declarations: [AppComponent, DataBindingComponent, TempConverterPipe, PipeComponent, FormsComponent, EmojiDirective],
   imports: [FormsModule, ReactiveFormsModule, BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

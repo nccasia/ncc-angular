@@ -19,13 +19,13 @@
 [Lesson 08: Http Client](./Lessons/Lesson8)
 
 - Advance features:  
-[Lesson 01: Dependency Injection](./Advance/Lesson1)  
-[Lesson 02: Lazy loading](./Advance/Lesson2)  
-[Lesson 03: Router guard](./Advance/Lesson3)  
-[Lesson 04: Interceptor](./Advance/Lesson4)  
-[Lesson 05: Rxjs Library](./Advance/Lesson5)  
-[Lesson 06: Dynamic component](./Advance/Lesson6)  
-[Lesson 07: Angular Animation](./Advance/Lesson7)  
+[Lesson 01: Dependency Injection](./Advances/Lesson1)  
+[Lesson 02: Lazy loading](./Advances/Lesson2)  
+[Lesson 03: Router guard](./Advances/Lesson3)  
+[Lesson 04: Interceptor](./Advances/Lesson4)  
+[Lesson 05: Rxjs Library](./Advances/Lesson5)  
+[Lesson 06: Dynamic component](./Advances/Lesson6)  
+[Lesson 07: Angular Animation](./Advances/Lesson7)  
 
 ## To install Angular 8, we require the following things:
 

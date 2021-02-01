@@ -1,0 +1,21 @@
+<div>
+    This example call 2 APIs and the second relates to the result of the first: Loading 5 post and load the comments of the first post
+</div>
+
+<div>
+    Post
+    <ul>
+        <li *ngFor="let item of posts">
+            {{item.title}}
+        </li>
+    </ul>
+</div>
+
+<div>
+    Comments of the first post
+    <ul>
+        <li *ngFor="let item of comments">
+            {{item.postId}} - {{item.body}}
+        </li>
+    </ul>
+</div>

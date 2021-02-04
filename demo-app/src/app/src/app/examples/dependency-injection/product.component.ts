@@ -11,6 +11,12 @@ import { NewCartService } from "./new-cart.service";
       provide: CartService,
       useClass: NewCartService,
     },
+    {
+      provide: NewCartService,
+      useFactory: () => {
+        return { text: "NewCartService use Factory", key: 123 };
+      },
+    },
   ],
   templateUrl: "./product.component.html",
   styleUrls: ["./product.component.css"],
@@ -19,8 +25,13 @@ export class ProductComponent implements OnInit {
   config: AppConfig;
   cartCalculate = "";
 
-  constructor(private _cartService: CartService, private _config: AppConfig) {
+  constructor(
+    private _cartService: CartService,
+    private _config: AppConfig,
+    private _newCartService: NewCartService
+  ) {
     this.config = _config;
+    console.log(_newCartService);
   }
   ngOnInit() {
     this.cartCalculate = this._cartService.calculateTotal();

@@ -16,6 +16,7 @@ import { SubjectComponent } from "./src/app/examples/rxjs/subject/subject.compon
 import { SubjectIncreaseFistComponent } from "./src/app/examples/rxjs/subject/subject-increase-fist/subject-increase-fist.component";
 import { SubjectIncreaseSecondComponent } from "./src/app/examples/rxjs/subject/subject-increase-second/subject-increase-second.component";
 import { ProductComponent } from "./src/app/examples/dependency-injection/product.component";
+import { ModuleGuardModule } from "./src/app/examples/route-guard/module-guard.module";
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ProductComponent } from "./src/app/examples/dependency-injection/produc
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ModuleGuardModule
   ],
   providers: [],
   bootstrap: [AppComponent],

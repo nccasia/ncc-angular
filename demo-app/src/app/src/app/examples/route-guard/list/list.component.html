@@ -1,0 +1,27 @@
+<div class="row" *ngIf="listData$ | async as listData; else loadingTmpl">
+  <div class="col-md-3" *ngFor="let data of listData">
+    <div class="card text-center">
+      <div class="card-header">
+        {{ data.title }}
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ data.content }}</p>
+        <a
+          [routerLink]="data.slug"
+          [skipLocationChange]="true"
+          class="btn btn-primary"
+          >Xem {{ data.title }}</a
+        >
+        <br />
+        <a
+          routerLink="{{ data.slug }}/edit"
+          [skipLocationChange]="true"
+          class="btn btn-primary"
+          >Sửa {{ data.title }}</a
+        >
+      </div>
+    </div>
+    <br />
+  </div>
+</div>
+<ng-template #loadingTmpl> Loading... </ng-template>

@@ -110,7 +110,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
 ## Using interceptors for logging
 Bởi vì các `interceptor` có thể xử lý với cả request và response cho nên chúng có thể thực hiện các công việc như timing hay logging toàn bộ hoạt động HTTP
-Ví dụ sau đây là một `interceptor` bắt thời giàn của một request, response và log lại kết quả:  
+Ví dụ sau đây là một `interceptor` bắt thời gian của một request, response và log lại kết quả:  
 ```ts
 import { finalize, tap } from 'rxjs/operators';
 import { MessageService } from '../message.service';

@@ -81,6 +81,7 @@ Chúng ta cần một số bước như sau để dynamic render component:
 ```
 ### ComponentFactory
 Đây là 1 class dùng để tạo ra các components dynamic. Là kết quả trả về của ComponentFactoryResolver.resolveComponentFactory().
+https://angular.io/api/core/ComponentFactory
 
 ### ComponentFactoryResolver
 Đây là 1 class nhận vào các component để load dynamic và tạo ra 1 component factory của component đó. ViewContainerRef sẽ dùng ComponentFactory đó để load dynamic các components.

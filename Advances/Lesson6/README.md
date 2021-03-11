@@ -109,3 +109,5 @@ clearDynamicComp() {
     this.containerRef.clear();
   }
 ```
+
+Tìm hiểu thêm tại https://angular.io/guide/dynamic-component-loader#dynamic-component-loading

@@ -7,6 +7,7 @@ import { FormsComponent } from "./src/app/examples/forms/forms.component";
 import { PipeComponent } from "./src/app/examples/pipes/pipe.component";
 import { RxjsComponent } from "./src/app/examples/rxjs/rxjs.component";
 import { ProductComponent } from "./src/app/examples/dependency-injection/product.component";
+import { DynamicExampleComponent } from "./src/app/examples/dynamic-component/dynamic-example.component";
 
 const routes: Routes = [
   { path: "di", component: ProductComponent },
@@ -36,6 +37,7 @@ const routes: Routes = [
       { path: "subject", component: SubjectComponent },
     ],
   },
+  { path: "dynamic-component", component: DynamicExampleComponent },
 ];
 
 @NgModule({

@@ -17,6 +17,8 @@ import { SubjectIncreaseFistComponent } from "./src/app/examples/rxjs/subject/su
 import { SubjectIncreaseSecondComponent } from "./src/app/examples/rxjs/subject/subject-increase-second/subject-increase-second.component";
 import { ProductComponent } from "./src/app/examples/dependency-injection/product.component";
 import { ModuleGuardModule } from "./src/app/examples/route-guard/module-guard.module";
+import { DynamicComponent } from "./src/app/examples/dynamic-component/dynamic/dynamic.component";
+import { DynamicExampleComponent } from './src/app/examples/dynamic-component/dynamic-example.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ModuleGuardModule } from "./src/app/examples/route-guard/module-guard.m
     SubjectComponent,
     SubjectIncreaseFistComponent,
     SubjectIncreaseSecondComponent,
+    DynamicComponent,
+    DynamicExampleComponent,
   ],
   imports: [
     FormsModule,
@@ -43,5 +47,6 @@ import { ModuleGuardModule } from "./src/app/examples/route-guard/module-guard.m
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [DynamicComponent]
 })
 export class AppModule {}

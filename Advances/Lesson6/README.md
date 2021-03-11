@@ -85,6 +85,7 @@ https://angular.io/api/core/ComponentFactory
 
 ### ComponentFactoryResolver
 Đây là 1 class nhận vào các component để load dynamic và tạo ra 1 component factory của component đó. ViewContainerRef sẽ dùng ComponentFactory đó để load dynamic các components.
+https://angular.io/api/core/ComponentFactoryResolver
 
 `Lưu ý:`  chúng ta sử dụng dynamic render, nên cần báo cho Angular biết chúng ta sẽ cần những component nào. Việc khai báo thì ta sẽ thêm vào app.module.ts như sau
 ```ts

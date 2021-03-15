@@ -1,16 +1,16 @@
 <h1>Routing & Navigation example</h1>
-<div>
+<div style="min-height: 400px;">
     <h3>Appear and Disappear</h3>
     <div>
         <button (click)="flyInOut()">Play Animation</button>
     </div>
-    <img *ngIf="imgDisplay" [@flyInOut]="imgDisplay" width="200px" src="https://vcdn1-ione.vnecdn.net/2020/12/21/IMG-20201220-214217-2550-1608488489.jpg?w=460&h=0&q=100&dpr=2&fit=crop&s=YpOsEPWbGr9czlhASCeNQw" />
+    <img *ngIf="imgDisplay" [@flyInOut]="imgDisplay" style="margin-top: 10px;" width="200px" src="https://vcdn1-ione.vnecdn.net/2020/12/21/IMG-20201220-214217-2550-1608488489.jpg?w=460&h=0&q=100&dpr=2&fit=crop&s=YpOsEPWbGr9czlhASCeNQw" />
 </div>
 <br/>
-<div>
+<div style="min-height: 400px; margin-top: 30px;">
     <h3>Slide</h3>
     <div>
         <button (click)="playSlide()">Play Animation</button>
     </div>
-    <img [@slide]="slide" style="position: relative;" width="200px" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg" />
+    <img [@slide]="slide" style="position: relative; margin-top: 10px;" width="200px" src="https://2sao.vietnamnetjsc.vn/images/2020/07/07/15/13/Rose.jpg" />
 </div>

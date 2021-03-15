@@ -36,6 +36,13 @@ const routes: Routes = [
       { path: "subject", component: SubjectComponent },
     ],
   },
+  {
+    path: "angular-animation",
+    loadChildren: () =>
+      import("./src/app/examples/angular-animation/angular-animation.module").then(
+        (m) => m.AngularAnimationModule
+      ),
+  },
 ];
 
 @NgModule({

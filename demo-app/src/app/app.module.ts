@@ -17,6 +17,7 @@ import { SubjectIncreaseFistComponent } from "./src/app/examples/rxjs/subject/su
 import { SubjectIncreaseSecondComponent } from "./src/app/examples/rxjs/subject/subject-increase-second/subject-increase-second.component";
 import { ProductComponent } from "./src/app/examples/dependency-injection/product.component";
 import { ModuleGuardModule } from "./src/app/examples/route-guard/module-guard.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ModuleGuardModule } from "./src/app/examples/route-guard/module-guard.m
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ModuleGuardModule

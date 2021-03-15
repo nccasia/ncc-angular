@@ -10,7 +10,7 @@
 5. Route transition animation
 
 ## Setup Angular animation
-Bước 1: Bật animations module: import `BrowserAnimationsModule` vào Angular root application module.  
+Bước 1: import `BrowserAnimationsModule` vào Angular root application module.  
 
 ```ts
 import { NgModule } from '@angular/core';
@@ -59,7 +59,7 @@ Ví dụ chúng ta có 1 button với 2 trạng thái như bên dưới, để l
 
 ### Animation state and styles
 Sử dụng `state()` function để định nghĩa các trạng thái khác nhau mà qua đó chúng ta sẽ thực hiện hiệu ứng chuyển đổi qua lại giữa các trạng thái này. Function này gồm 2 tham số đó là một unique name như `open` hay `close` và một `style()` function.  
-Với `style()` function  chúng ta có thể định nghĩa các style tương ứng với mốt state.  
+Với `style()` function  chúng ta có thể định nghĩa các style tương ứng với một state.  
 ```ts
 // ...
 state('open', style({
@@ -78,7 +78,7 @@ state('closed', style({
 
 ### Transitions and timing  
 Để xác định quá trình chuyển đổi từ trạng thái này sang trạng thái khác trong Angular chúng ta sử dụng function `transition()`, function này gồm 2 tham số đầu tiên là một biểu thức định nghĩa việc chuyển đổi từ trạng thái này sang trạng thái khác, tham số thứ 2 là tập các `animation()`.  
-function `animate()` có các tham số định nghĩa việc timing và style của chuyển động: `animate ('duration delay easing')  
+function `animate()` có các tham số định nghĩa việc timing và style của chuyển động: `animate ('duration delay easing')`  
 Ví dụ:  
 ```ts
 transition('closed => open', [
@@ -136,7 +136,7 @@ Trong ví dụ này giá trị của biến `isOpen` sẽ xác định trạng t
 Phần này chúng ta sẽ tùm hiểu một số trạng thái đặc biệt như `* (wildcard)` hay `void` và các trạng thái đặc biệt này được sử dụng để apply hiệu ứng chuyển đối đối với các phần tử khi chúng xuất hiện hay biến mất.
 
 ### Wildcard state
-Ký tự `*` tương ứng với bất kỳ trạng thái nào, ví dụ `open => *` được apply cho các trạng thái chuyển đổi từ `open` sang trạng thái bất kỳ. Hay `*=> *` sẽ được apply cho bất kỳ sự chuyển đổi trạng thái nào xảy ra. Trường hợp có nhiều sự chuyển đổi `transition()` được định nghĩa, transition sẽ được apply khi match với `transition()` đứng trước trong danh sách các transition mà bạn đã định nghĩa.
+Ký tự `*` tương ứng với bất kỳ trạng thái nào, ví dụ `open => *` được apply cho các trạng thái chuyển đổi từ `open` sang trạng thái bất kỳ. Hay `* => *` sẽ được apply cho bất kỳ sự chuyển đổi trạng thái nào xảy ra. Trường hợp có nhiều sự chuyển đổi `transition()` được định nghĩa, transition sẽ được apply khi match với `transition()` đứng trước trong danh sách các transition mà bạn đã định nghĩa.
 ```ts
 animations: [
   trigger('openClose', [
@@ -234,7 +234,7 @@ import { transAnimation } from './animations';
 })
 ```
 ## Route transition animation
-Angular animation cho phép bạn apply các animation khi chuyển đổi qua lại giữa các router khác nhau. Sau đây ta sẽ tìm hiểu cách apply các animation trẻn router.  
+Angular animation cho phép bạn apply các animation khi chuyển đổi qua lại giữa các tuyến router khác nhau. Sau đây ta sẽ tìm hiểu cách apply các animation trẻn router.  
 ### Route configuration
 ```ts
 @NgModule({
@@ -249,7 +249,7 @@ Angular animation cho phép bạn apply các animation khi chuyển đổi qua l
 ```
 `data` property định nghĩa các animation key cho các component tương ứng.
 ### Router outlet
-`<router-outlet>` là nơi các component tương ứng với các tuyến route xuất hiện và là nơi các component đó apply các animation khi chúng xuất hiện hay rời đi.  
+`<router-outlet>` là nơi các component tương ứng với các tuyến route xuất hiện, bản chất của routing animation chính là việc apply các animation khi chúng xuất hiện hay rời đi.  
 ```html
 <div [@routeAnimations]="prepareRoute(outlet)">
   <router-outlet #outlet="outlet"></router-outlet>

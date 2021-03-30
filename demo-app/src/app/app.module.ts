@@ -18,6 +18,8 @@ import { SubjectIncreaseSecondComponent } from "./src/app/examples/rxjs/subject/
 import { ProductComponent } from "./src/app/examples/dependency-injection/product.component";
 import { ModuleGuardModule } from "./src/app/examples/route-guard/module-guard.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DynamicComponent } from "./src/app/examples/dynamic-component/dynamic/dynamic.component";
+import { DynamicExampleComponent } from './src/app/examples/dynamic-component/dynamic-example.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SubjectComponent,
     SubjectIncreaseFistComponent,
     SubjectIncreaseSecondComponent,
+    DynamicComponent,
+    DynamicExampleComponent,
   ],
   imports: [
     FormsModule,
@@ -45,5 +49,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [DynamicComponent]
 })
 export class AppModule {}
